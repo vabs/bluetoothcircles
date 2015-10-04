@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -136,12 +137,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return super.onOptionsItemSelected(item);
     }
 
-    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-        /*if(listAdapter.getItem(arg2).contains("Paired")) {
-            Toast.makeText(getApplicationContext(), "device is paired", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getApplicationContext(), "device is not paired", Toast.LENGTH_SHORT).show();
-        }*/
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent newActivity = new Intent(this, Messages.class);
+        ArrayList<String> arrayList = new ArrayList<String>();
+        arrayList.add(0, "message 1");
+        arrayList.add(1, "message 2");
+        arrayList.add(2, "message 3");
+        arrayList.add(3, "message 4");
+
+        newActivity.putExtra("messages", arrayList);
+        startActivity(newActivity);
     }
 
     public void onClickBtnScan(View view) {
