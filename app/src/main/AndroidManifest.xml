@@ -26,6 +26,11 @@
             android:label="@string/title_activity_messages"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+
+        <service
+            android:name=".BluetoothBackgroundWorker"
+            android:exported="false" >
+        </service>
     </application>
 
 </manifest>

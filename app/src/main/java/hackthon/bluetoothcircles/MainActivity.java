@@ -102,8 +102,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+
+    @Override
     protected void onDestroy(){
         super.onDestroy();
+        Intent sIntent =  new Intent();
+        sIntent.setClass(this, BluetoothBackgroundWorker.class);
+        sIntent.setAction("NOTIFICATION");
+        startService(sIntent);
     }
 
     @Override
