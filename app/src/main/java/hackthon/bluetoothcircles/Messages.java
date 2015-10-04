@@ -10,9 +10,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class Messages extends AppCompatActivity {
 
     ListView messagesList;
+    ArrayList<String> messages;
     ArrayAdapter<String> messagesListAdapter;
 
     @Override
@@ -23,6 +26,10 @@ public class Messages extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            messages = new ArrayList<String>();
+            messages = extras.getStringArrayList("messages");
+        }
         init();
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -39,6 +46,8 @@ public class Messages extends AppCompatActivity {
         messagesList = (ListView)findViewById(R.id.messagesList);
         messagesListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, 0);
         messagesList.setAdapter(messagesListAdapter);
+        if(messages != null)
+            messagesListAdapter.addAll(messages);
     }
 
 }
